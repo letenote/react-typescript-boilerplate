@@ -5,7 +5,7 @@ const HelloWorld: React.FC<{}> = () => {
   return(
     <>
     <h1>My React and TypeScript App!! {new Date().toLocaleDateString()}</h1>
-  <img src={imageLogo} />
+    <img src={imageLogo} width="200px" height="200px"/>
   </>
   )
 };

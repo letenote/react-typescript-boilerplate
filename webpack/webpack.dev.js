@@ -1,4 +1,3 @@
-const webpack = require("webpack");
 const commonPaths = require("./paths");
 
 module.exports = {
@@ -13,9 +12,8 @@ module.exports = {
     static: {
       directory: commonPaths.outputPath_dev,
     },
-    compress: true,
+    compress: false,
     historyApiFallback: true,
-    https: false,
     open: true,
     hot: true,
     port: 9002,
@@ -41,7 +39,8 @@ module.exports = {
             loader: "less-loader",
             options: {
               lessOptions: {
-                // If you are using less-loader@5 please spread the lessOptions to options directly
+                // If you are using less-loader@5
+                // please spread the lessOptions to options directly
                 modifyVars: {
                   "primary-color": commonPaths.antdModifyVar["primary-color"],
                   "link-color": commonPaths.antdModifyVar["link-color"],
@@ -71,5 +70,5 @@ module.exports = {
       },
     ],
   },
-  plugins: [new webpack.HotModuleReplacementPlugin()],
+  plugins: [],
 };
