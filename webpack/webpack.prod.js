@@ -6,6 +6,7 @@ const { WebpackManifestPlugin } = require("webpack-manifest-plugin");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 const CompressionPlugin = require("compression-webpack-plugin");
 const zlib = require("zlib");
+const { BundleStatsWebpackPlugin } = require("bundle-stats-webpack-plugin");
 
 module.exports = {
   mode: "production",
@@ -15,6 +16,9 @@ module.exports = {
     publicPath: "/",
     chunkFilename: `${commonPaths.jsFolder}/[chunkhash].[name].js`,
   },
+  cache: {
+    type: "filesystem",
+  },
   devtool: false,
   performance: {
     hints: "warning",
@@ -23,14 +27,20 @@ module.exports = {
     },
   },
   optimization: {
+    moduleIds: "deterministic",
     minimize: true,
     minimizer: [
       new TerserPlugin({
         parallel: true,
+        terserOptions: {
+          compress: {
+            drop_console: true,
+          },
+        },
       }),
     ],
     runtimeChunk: {
-      name: "chunk",
+      name: "manifest",
     },
     splitChunks: {
       cacheGroups: {
@@ -86,7 +96,7 @@ module.exports = {
           {
             loader: "css-loader",
             options: {
-              sourceMap: false,
+              sourceMap: true,
             },
           },
           {
@@ -143,6 +153,19 @@ module.exports = {
       },
       threshold: 10240,
       minRatio: 0.8,
+    }),
+    new BundleStatsWebpackPlugin({
+      baseline: true,
+      json: true,
+      outDir: "../build-report-analyzer",
+      stats: {
+        assets: true,
+        entrypoints: true,
+        chunks: true,
+        modules: true,
+        builtAt: true,
+        hash: true,
+      },
     }),
   ],
 };
