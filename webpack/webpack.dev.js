@@ -16,9 +16,9 @@ module.exports = {
     historyApiFallback: true,
     open: true,
     hot: true,
-    port: 9002,
+    port: 8080,
     proxy: {
-      "/api": "http://localhost:9000",
+      "/api": "http://localhost:9090",
     },
     devMiddleware: {
       writeToDisk: true,
