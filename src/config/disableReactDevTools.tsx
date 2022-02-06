@@ -1,24 +1,11 @@
-// Declare the types if you're using TypeScript
-// Remove this block if you're using JavaScript
-declare global {
-  interface Window {
-    __REACT_DEVTOOLS_GLOBAL_HOOK__: any;
-  }
-}
+export const disableReactDevTools = (): void => {
+  const noop = (): void => undefined;
+  const valueDefault: string = "__VUE_DEVTOOLS_GLOBAL_HOOK__";
+  const DEV_TOOLS = (window as any).__REACT_DEVTOOLS_GLOBAL_HOOK__;
 
-export function disableReactDevTools(): void {
-  if (typeof window.__REACT_DEVTOOLS_GLOBAL_HOOK__ !== "object") {
-    return;
-  }
-  
-  for (const prop in window.__REACT_DEVTOOLS_GLOBAL_HOOK__) {
-    if (prop === "renderers") {
-      window.__REACT_DEVTOOLS_GLOBAL_HOOK__[prop] = new Map()
-    } else {
-      window.__REACT_DEVTOOLS_GLOBAL_HOOK__[prop] =
-        typeof window.__REACT_DEVTOOLS_GLOBAL_HOOK__[prop] === "function"
-          ? () => {}
-          : null;
+  if (typeof DEV_TOOLS === "object") {
+    for (const [key, value] of Object.entries(DEV_TOOLS)) {
+      DEV_TOOLS[key] = typeof value === "function" ? noop : valueDefault;
     }
   }
 };
