@@ -1,3 +1,9 @@
+:root {
+  --theme-background-color: #1d88ec;
+  --theme-background-color-hover: #1d54ec;
+  --theme-border: 1px solid #1d54ec;
+}
+
 @font-face {
   font-family: Poppins-Regular;
   src: local(Poppins-Regular),
@@ -46,4 +52,33 @@ nav {
   align-items: center;
   justify-content: space-between;
   border-bottom: 1px solid #e5e5e5;
+}
+
+#root {
+  display: flex;
+  justify-content: center;
+}
+
+button {
+  width: 100%;
+  padding: 10px;
+  font-weight: bold;
+  background-color: var(--theme-background-color);
+  border: var(--theme-border);
+  color: #ffffff;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: var(--theme-background-color-hover);
+  border: var(--theme-border);
+}
+
+button:disabled {
+  opacity: var(--disabled-opacity);
+  cursor: var(--disabled-cursor);
+  background-color: var(--disabled-background-color);
+  color: rgba(0, 0, 0, 0.411);
+  border-color: var(--disabled-border-color);
 }
