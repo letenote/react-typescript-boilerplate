@@ -2,12 +2,14 @@ import React from "react";
 import HelloWorld from "./components/HelloWorld";
 import RenderForm from "./components/RenderForm";
 import Counter from './containers/Counter';
+import Bank from './containers/Bank';
 
 const App: React.FC<{}> = () => {
   return (
-    <>
-      <Counter title="Counter"/>
-    </>
+    <div style={{ display: "flex", flexDirection: "column" }}>
+      <Counter title="COUNTER"/>
+      <Bank/>
+    </div>
   );
 };
 
