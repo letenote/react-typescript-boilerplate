@@ -19,10 +19,11 @@
     "staging": "rm -rf build && npm run prod && serve -s -p 8989 build",
     "prod": "rm -rf build && cross-env NODE_ENV=production webpack",
     "build-serve": "rm -rf build && npm run prod && serve -s -p 8989",
-    "test": "jest --env=jsdom --updateSnapshot --coverage --watchAll",
+    "test": "jest --env=jsdom --updateSnapshot --watchAll",
     "test:coverage": "jest --env=jsdom --updateSnapshot --collectCoverage"
   },
   "jest": {
+    "verbose": true,
     "transform": {
       "^.+\\.(ts|js)x?$": "ts-jest"
     },
@@ -55,12 +56,31 @@
       "<rootDir>/bower_components/",
       "<rootDir>/node_modules/"
     ],
+    "collectCoverage": true,
+    "collectCoverageFrom": [
+      "src/**/*.tsx"
+    ],
+    "coveragePathIgnorePatterns": [
+      "node_modules",
+      "test-config",
+      "interface",
+      "interfaces",
+      "action-types",
+      "jestGlobalMocks.ts",
+      ".module.ts",
+      "<rootDir>/src/redux/store.tsx",
+      "<rootDir>/src/redux/reducers/index.tsx",
+      "<rootDir>/src/redux/middleware/logger.tsx",
+      "<rootDir>/src/config/disableReactDevTools.tsx",
+      ".mock.ts"
+    ],
+    "coverageDirectory": "<rootDir>/src/__coverage__/",
     "coverageThreshold": {
       "global": {
-        "branches": 50,
-        "functions": 50,
-        "lines": 50,
-        "statements": -10
+        "branches": 75,
+        "functions": 75,
+        "lines": 75,
+        "statements": 75
       }
     }
   },

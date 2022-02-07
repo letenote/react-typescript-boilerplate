@@ -29,13 +29,13 @@ describe('My Connected React-Redux Component', () => {
   it('should render with given default "bank" state from Redux store', () => {
     const getBankReducer = store.getState().bank;
     const setBankReducer = bankReducer(initialState, { type: BankActionTypes.BANKRUPT });
-    console.log(
-      "BANK_STORE",
-      {
-        json: myApp.toJSON(),
-        store: getBankReducer
-      }
-    );
+    // console.log(
+    //   "BANK_STORE",
+    //   {
+    //     json: myApp.toJSON(),
+    //     store: getBankReducer
+    //   }
+    // );
     expect(getBankReducer).toEqual(setBankReducer);
   });
 });

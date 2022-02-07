@@ -6,7 +6,7 @@ interface TextfieldInterface {
 };
 
 const Textfield: FC<TextfieldInterface> = ({ value, onChange }) => {
-  console.log("RENDER TEXTFIELD")
+  // console.log("RENDER TEXTFIELD")
   return(
     <div style={{ position: 'relative' }}>
       <input

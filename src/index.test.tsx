@@ -30,13 +30,13 @@ describe('Application root', () => {
       array: [{hello: 'Dange-r'}],
     };
     expect(object).toMatchInlineSnapshot(`
-{
-  "array": [
-    {
-      "hello": "Dange-r",
-    },
-  ],
-}
-`);
+      {
+        "array": [
+          {
+            "hello": "Dange-r",
+          },
+        ],
+      }
+    `);
   });
 });
