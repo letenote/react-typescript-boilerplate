@@ -19,7 +19,19 @@ const Counter: FC<Props> = ({ title = "title" }) => {
 
   return(
     <div>
-      <h1>{title}: {count}</h1>
+      <h1 style={{ position: "relative" }}>
+        {title}: {count}
+        <span 
+          style={{ 
+            position: "absolute", 
+            left: 0, 
+            top: "35px", 
+            fontSize: 10 
+          }}
+        >
+          Implement State
+        </span>
+      </h1>
       <div style={{ display: "flex" }}>
         <button 
           className="button" 

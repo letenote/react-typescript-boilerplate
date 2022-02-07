@@ -12,10 +12,23 @@ const Bank: FC = () => {
   const { depositMoney, withdrawMoney, bankruptMoney } = bindActionCreators(bankActionCreators, dispatch);
   const [ moneyField, setMoneyField ] = useState<string>("");
   const memoizedActions = ( cb: () => void ) => useCallback(() => cb(), [moneyField]);
+  useEffect(() => setMoneyField(""), [myBank.money])
   
   return(
     <div>
-      <h1>BANK STORE</h1>
+      <h1 style={{ position: "relative" }}>
+        BANK STORE 
+        <span 
+          style={{ 
+            position: "absolute", 
+            left: 0, 
+            top: "35px", 
+            fontSize: 10 
+          }}
+        >
+          Implement Redux
+        </span>
+      </h1>
       <h3>Money: {myBank.money}</h3>
       <div style={{ display: "flex", flexDirection: "column" }}>
         <Textfield 

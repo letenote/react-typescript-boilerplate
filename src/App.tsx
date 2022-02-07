@@ -7,7 +7,7 @@ import Bank from './containers/Bank';
 const App: React.FC<{}> = () => {
   return (
     <div style={{ display: "flex", flexDirection: "column" }}>
-      <Counter title="Counter"/>
+      <Counter title="COUNTER"/>
       <Bank/>
     </div>
   );

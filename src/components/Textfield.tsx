@@ -11,15 +11,16 @@ const Textfield: FC<TextfieldInterface> = ({ value, onChange }) => {
     <div style={{ position: 'relative' }}>
       <input
         value={value}
+        placeholder={value === "" ? "input here" : ""}
         onChange={onChange}
         type={'text'}
       />
     </div>
   )
-}
+};
 
 const compare = ( prevProps: TextfieldInterface, nextProps: TextfieldInterface ) => {
   return JSON.stringify(prevProps) === JSON.stringify(nextProps)
-}
+};
 
 export default memo(Textfield, compare);
