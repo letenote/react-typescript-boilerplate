@@ -2,6 +2,15 @@
   --theme-background-color: #1d88ec;
   --theme-background-color-hover: #1d54ec;
   --theme-border: 1px solid #1d54ec;
+  --form-border: 1px solid #c3c3c3;
+  --form-border-color: #c3c3c3;
+  --form-border-width: 1.5px;
+  --form-border-style: solid;
+  --form-border-radius: 4px;
+  --form-placeholder-color: #7d7d7d;
+  --form-font-size: 12px;
+  --form-padding: 10px;
+  --form-box-sizing: border-box;
 }
 
 @font-face {
@@ -42,11 +51,6 @@ p {
   font-size: 13px;
 }
 
-button {
-  height: 30px;
-  font-weight: bold;
-}
-
 nav {
   display: flex;
   align-items: center;
@@ -81,4 +85,14 @@ button:disabled {
   background-color: var(--disabled-background-color);
   color: rgba(0, 0, 0, 0.411);
   border-color: var(--disabled-border-color);
+}
+
+input {
+  width: 100%;
+  padding: var(--form-padding);
+  box-sizing: var(--form-box-sizing);
+  border-color: var(--form-border-color);
+  border-width: var(--form-border-width);
+  border-style: var(--form-border-style);
+  border-radius: var(--form-border-radius);
 }
