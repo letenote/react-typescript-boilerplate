@@ -20,7 +20,7 @@ beforeEach(() => {
   instance = myApp.root;
 });
 
-describe('My Connected React-Redux Component', () => {
+describe('__REDUX_CONNECTED', () => {
   it('create snapshoot', () => {
     const tree = myApp.toJSON();
     expect(tree).toMatchSnapshot();

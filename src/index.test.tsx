@@ -5,7 +5,7 @@ import { Provider } from "react-redux";
 import { store } from "./redux/store"; 
 
 jest.mock('react-dom', () => ({ render: jest.fn() }));
-describe('Application root', () => {
+describe('__APPLICATION_ROOT', () => {
   it('use jsdom in this test file', () => {
     const element = document.createElement('div');
     expect(element).not.toBeNull();
