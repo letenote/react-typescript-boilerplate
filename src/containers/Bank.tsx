@@ -11,8 +11,13 @@ const Bank: FC = () => {
   const dispatch = useDispatch();
   const { depositMoney, withdrawMoney, bankruptMoney } = bindActionCreators(bankActionCreators, dispatch);
   const [ moneyField, setMoneyField ] = useState<string>("");
+  const [ isValidationError, setValidationError ] = useState<boolean>(false)
   const memoizedActions = ( cb: () => void ) => useCallback(() => cb(), [moneyField]);
-  useEffect(() => setMoneyField(""), [myBank.money])
+  
+  useEffect(() => {
+    setValidationError(false)
+    setMoneyField("")
+  }, [myBank.money])
   
   return(
     <div>
@@ -29,23 +34,30 @@ const Bank: FC = () => {
           Implement Redux
         </span>
       </h1>
-      <h3>Money: {myBank.money}</h3>
+      <h3 data-testid={"count-value"}>Balanced: {myBank.money}</h3>
       <div style={{ display: "flex", flexDirection: "column" }}>
         <Textfield 
+          id="moneyFormInput"
+          label={"Money Input"}
           value={moneyField}
+          required={true}
           onChange={(e) => setMoneyField(e.target.value)}
+          validation={{
+            isError: isValidationError,
+            message: "required"
+          }}
         />
         <Button
           title="Deposit"
-          onClick={memoizedActions(() => depositMoney(Number(moneyField)))}
+          onClick={memoizedActions(() => moneyField === "" ? setValidationError(true) : depositMoney(Number(moneyField)))}
         />
         <Button
           title="Withdraw"
-          onClick={memoizedActions(() => withdrawMoney(Number(moneyField)))}
+          onClick={memoizedActions(() => moneyField === "" ? setValidationError(true) : withdrawMoney(Number(moneyField)))}
         />
         <Button
           title="Bankrupt"
-          onClick={memoizedActions(() => bankruptMoney())}
+          onClick={memoizedActions(() => (setValidationError(false), bankruptMoney()))}
         />
       </div>
     </div>

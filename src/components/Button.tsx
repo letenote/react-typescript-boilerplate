@@ -6,7 +6,7 @@ interface ButtonProps {
 };
 
 const Button: FC<ButtonProps> = ( { title = 'title', onClick } ) => {
-  console.log("RENDER BUTTON")
+  // console.log("RENDER BUTTON")
   
   return(
     <button

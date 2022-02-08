@@ -1,11 +1,11 @@
 import { BankReducer  } from "./interface/BankReducerInterface";
 import { BankAction } from "./interface/BankActionInterface";
 import { BankActionTypes } from "./action-types";
-const initialState = {
+export const initialState = {
   money: 0
 };
 
-const bankReducer = ( state: BankReducer = initialState, action: BankAction ) => {
+export const bankReducer = ( state: BankReducer = initialState, action: BankAction ) => {
   switch( action.type ){
     case BankActionTypes.DEPOSIT:
       return {
@@ -27,4 +27,4 @@ const bankReducer = ( state: BankReducer = initialState, action: BankAction ) =>
   }
 }
 
-export default bankReducer;
+// export default bankReducer;
