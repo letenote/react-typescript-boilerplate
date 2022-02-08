@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
+import { render } from './test-utils';
 import { Provider } from "react-redux";
 import { store } from "./redux/store"; 
 
@@ -11,7 +12,7 @@ describe('__APPLICATION_ROOT', () => {
     expect(element).not.toBeNull();
   });
 
-  it('should render without crashing', () => {
+  it('should render without crashing from DOM', () => {
     const div = document.createElement('div');
     div.id = 'root';
     document.body.appendChild(div);
@@ -24,6 +25,16 @@ describe('__APPLICATION_ROOT', () => {
       </React.StrictMode>
     ,div);
   });
+
+  // it('should render without crashing from RTL', () => {
+  //   const div = document.createElement('div');
+  //   div.id = 'root';
+  //   document.body.appendChild(div);
+  //   require('./index.tsx');
+  //   expect(ReactDOM.render).toHaveBeenCalledWith(
+  //     render(<App />)
+  //   ,div);
+  // });
 
   it('does not show prototypes for object and array inline', () => {
     const object = {
